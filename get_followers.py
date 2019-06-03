@@ -1,29 +1,3 @@
-import twint
-import mysql.connector
-from os import system, name
-
-val = (1,)
-count_tup = ((),)
-followee_id = 0
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="twitter_admin",
-  passwd="EyPxGqpK1y0v53rU",
-  database="twitter"
-)
-cursor = mydb.cursor()
-
-c = twint.Config()
-c.Limit = 100
-c.Hide_output = True
-c.User_id = 0
-c.Store_object = True
-
-
-def logger():
-    return
-
-
 def get_followers(id):
     d = twint.Config()
 
