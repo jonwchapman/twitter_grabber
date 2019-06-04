@@ -3,6 +3,8 @@
 # then grab the following data using twint.
 
 from get_user_count import get_user_count
+from get_user import get_user
+from add_user import add_user
 from add_user import add_user
 
 
