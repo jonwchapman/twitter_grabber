@@ -1,7 +1,9 @@
-import twint
+# designed to be run after fully populating database with users.
+# This passes the id to the get_followers module, where it is used to look up the user_id from the db, and
+# then grab the following data using twint.
+
 from get_user_count import get_user_count
 from add_user import add_user
-from db_connection import db_connection
 
 
 count = get_user_count()
@@ -21,5 +23,7 @@ while counter > 0:
         print(ret_val[1])
         # pass the user_id to get_followers(), probably save it off in a separate var before sending to function.
         get_followers(ret_val[1])
-
+    else:
+        # TODO: fix add_user() to grab user from twitter if not found in database.
+        #add_user()
     counter = counter - 1
