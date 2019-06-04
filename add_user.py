@@ -8,5 +8,5 @@ def add_user(user_id, user_name, mydb):
         return 1
 
     except Exception:
-        #logger()
+        # TODO: Add specific exceptions
         return 0
