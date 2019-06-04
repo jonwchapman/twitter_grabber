@@ -2,8 +2,6 @@ import twint
 from add_tweet import add_tweet
 from add_user import add_user
 from db_connection import db_connection
-import mysql.connector
-from os import system, name
 
 
 c = twint.Config()
@@ -45,6 +43,7 @@ while loops >= 1:
 
         try:
             parent_tweet = single_tweet.user_rt
+        # TODO: specific exceptions
         except:
             parent_tweet = 0
 
