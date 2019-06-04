@@ -2,8 +2,6 @@ import twint
 from get_user_count import get_user_count
 from add_user import add_user
 from db_connection import db_connection
-import mysql.connector
-from os import system, name
 
 
 count = get_user_count()
@@ -25,4 +23,3 @@ while counter > 0:
         get_followers(ret_val[1])
 
     counter = counter - 1
-
