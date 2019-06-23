@@ -10,6 +10,7 @@ def get_followers(id):
         print("Trying to get followers....")
         twint.run.Followers(d)
         followers_dict = twint.output.follow_object
+
         index = 1
         for x in followers_dict:
             print(index)
@@ -29,4 +30,4 @@ def get_followers(id):
 
     except:
         print("ERROR - UNABLE TO RETRIEVE FOLLOWERS")
-
+#

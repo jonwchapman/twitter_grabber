@@ -1,31 +1,56 @@
 # designed to be run after fully populating database with users.
 # This passes the id to the get_followers module, where it is used to look up the user_id from the db, and
 # then grab the following data using twint.
+import json
+import twint
 
-from get_user_count import get_user_count
-from get_user import get_user
+from get_user import get_all_users
 from add_user import add_user
-from add_user import add_user
 
 
-count = get_user_count()
-counter = count[0]
+def get_followers(name):
+    d = twint.Config()
 
-# REMOVE
-counter = 20
+    d.Username = name
+    d.Store_object = True
+    d.Hide_output = True
+    d.Format = "{user_id},{user_name}"
 
-while counter > 0:
-    print(counter)
-    count_tup = (counter,)
-    ret_val = get_user(count_tup)
-    # check the return value to ensure its a tuple. If not a tuple, then its an error.
-    if type(ret_val) == tuple:
-        # print(ret_val[0])
-        # print the user_id in the form of ret_val[1], can be removed after everything is working.
-        print(ret_val[1])
-        # pass the user_id to get_followers(), probably save it off in a separate var before sending to function.
-        get_followers(ret_val[1])
-    else:
-        # TODO: fix add_user() to grab user from twitter if not found in database.
-        #add_user()
-    counter = counter - 1
+    try:
+        print("Trying to get followers for user " + name + ".")
+        twint.run.Followers(d)
+        followers_dict = twint.output.follow_object
+        index = 1
+        try:
+            # print("attempt 4:")
+            followers = followers_dict[name]["followers"]
+            for x in followers:
+                add_user(x)
+                print(x)
+
+        except:
+            print("")
+
+        for x in followers_dict:
+            print(index)
+            print("followee: " + x)
+            index = index + 1
+            followers = followers_dict[x].get("followers")
+
+            for name in followers:
+                print("follower:" + name)
+                uid = get_userid(name)
+                print("UID: " + uid)
+                # store_follower(uid)
+
+    except:
+        print("ERROR - UNABLE TO RETRIEVE FOLLOWERS")
+
+
+listOfUsers = get_all_users()
+if listOfUsers == 1:
+    print("")
+else:
+    for user_name in listOfUsers:
+        # print(user_name[0])
+        get_followers(user_name[0])
