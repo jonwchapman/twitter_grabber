@@ -38,7 +38,7 @@ def get_all_users():
 
 
 def get_user_id(name):
-    # print("get_user_id called for user: " + name)
+    print("get_user_id called for user: " + name)
     d = twint.Config()
     d.Username = name
     d.Store_object = True
