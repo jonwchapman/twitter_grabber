@@ -13,4 +13,3 @@ def add_follower(follower_id, followee_id):
         print("")
 
     return 1
-
