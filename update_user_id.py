@@ -2,6 +2,7 @@ from get_user import get_all_users
 from get_user import get_user_id
 from update_user import update_user
 
+
 print("Twitter User ID updater")
 listOfUsers = get_all_users()
 

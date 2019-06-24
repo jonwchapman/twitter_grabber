@@ -41,7 +41,7 @@ def get_user_id(name):
     d = twint.Config()
     d.Username = name
     d.Store_object = True
-    d.Hide_output = False
+    d.Hide_output = True
 
     try:
         twint.run.Lookup(d)
@@ -49,7 +49,6 @@ def get_user_id(name):
 
         for user in users:
             user_id = user.id
-            print(user_id)
 
         # reset the user_object, or it accumulates with each run.
         twint.output.user_object = []
@@ -59,4 +58,5 @@ def get_user_id(name):
     except:
         exception = 1
         user_id = 0
+        print("User " + name + " not found.")
         return user_id
