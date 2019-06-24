@@ -9,4 +9,3 @@ for user_name in listOfUsers:
     user_name = user_name[0]
     user_id = get_user_id(user_name)
     update_user(user_name, user_id)
-    index = index + 1
