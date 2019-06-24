@@ -25,14 +25,15 @@ def get_followers(name):
         # index = 1
         try:
             followers = followers_dict[name]["followers"]
-            for x in followers:
+            print("######### Adding Followers for " + name + " ###########")
+            follower_id = get_user_id(name)
+            for followee in followers:
                 #should probably perform a check before adding this willy-nilly
-                add_user(x)
+                # add_user(x)
 
-                print("Adding follower " + x + " for user " + name)
+                print("Adding follower " + followee + " for user " + name)
 
-                follower_id = get_user_id(name)
-                followee_id = get_user_id(x)
+                followee_id = get_user_id(followee)
 
                 add_follower(follower_id, followee_id)
 
@@ -59,13 +60,15 @@ def get_followers(name):
     return
 
 
+print("Twitter Follower Grabber")
 listOfUsers = get_all_users()
 if listOfUsers == 1:
     print("")
+
 else:
     index = 1
 
     for user_name in listOfUsers:
-        if index == 1:
+        if index < 3:
             get_followers(user_name[0])
             index = index + 1
