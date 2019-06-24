@@ -19,25 +19,22 @@ def get_followers(name):
     d.Format = "{user_id},{user_name}"
 
     try:
-        print("Trying to get followers for user " + name + ".")
         twint.run.Followers(d)
         followers_dict = twint.output.follow_object
-        # index = 1
+
         try:
             followers = followers_dict[name]["followers"]
-            print("######### Adding Followers for " + name + " ###########")
             follower_id = get_user_id(name)
+
+            print("######### Adding Followers for " + name + " ###########")
+
             for followee in followers:
-                #should probably perform a check before adding this willy-nilly
-                # add_user(x)
-
                 print("Adding follower " + followee + " for user " + name)
-
                 followee_id = get_user_id(followee)
-
+                add_user(followee, followee_id)
                 add_follower(follower_id, followee_id)
 
-            print("done with user " + name + ".")
+            print("######### Done with user " + name + " ###############")
 
         except:
             print("")
