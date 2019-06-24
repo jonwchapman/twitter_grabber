@@ -41,18 +41,22 @@ def get_user_id(name):
     d = twint.Config()
     d.Username = name
     d.Store_object = True
-    d.Hide_output = True
+    d.Hide_output = False
 
     try:
         twint.run.Lookup(d)
         users = twint.output.user_object
+
         for user in users:
             user_id = user.id
+            print(user_id)
+
+        # reset the user_object, or it accumulates with each run.
         twint.output.user_object = []
+
+        return user_id
 
     except:
         exception = 1
-
-    return user_id
-
-
+        user_id = 0
+        return user_id

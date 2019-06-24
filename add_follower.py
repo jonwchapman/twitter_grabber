@@ -9,6 +9,9 @@ def add_follower(follower_id, followee_id):
         cursor = mydb.cursor()
         cursor.execute(stmt1, (follower_id, followee_id))
         mydb.commit()
+
+        stmt2 = ""
+
     except:
         print("Exception adding Follower Relationship")
 

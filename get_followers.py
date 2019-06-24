@@ -31,22 +31,12 @@ def get_followers(name):
 
             print("######### Done with user " + name + " ###############")
 
+            return follower_id
+
         except:
             print("")
-
-        # for x in followers_dict:
-        #     print(index)
-        #     print("followee: " + x)
-        #     index = index + 1
-        #     followers = followers_dict[x].get("followers")
-
-        #     for name in followers:
-        #         print("follower:" + name)
-        #         uid = get_userid(name)
-        #         print("UID: " + uid)
-        #         store_follower(uid)
 
     except:
         print("ERROR - UNABLE TO RETRIEVE FOLLOWERS")
 
-    return
+        return 1
