@@ -30,8 +30,10 @@ def get_followers(name):
                 add_user(x)
 
                 print("Adding follower " + x + " for user " + name)
+
                 follower_id = get_user_id(name)
                 followee_id = get_user_id(x)
+
                 add_follower(follower_id, followee_id)
 
             print("done with user " + name + ".")
@@ -61,5 +63,9 @@ listOfUsers = get_all_users()
 if listOfUsers == 1:
     print("")
 else:
+    index = 1
+
     for user_name in listOfUsers:
-        get_followers(user_name[0])
+        if index == 1:
+            get_followers(user_name[0])
+            index = index + 1
