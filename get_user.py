@@ -38,7 +38,6 @@ def get_all_users():
 
 
 def get_user_id(name):
-    print("get_user_id called for user: " + name)
     d = twint.Config()
     d.Username = name
     d.Store_object = True
@@ -48,13 +47,12 @@ def get_user_id(name):
         twint.run.Lookup(d)
         users = twint.output.user_object
         for user in users:
-            print(user.username)
-            print(user.id)
+            user_id = user.id
         twint.output.user_object = []
 
     except:
         exception = 1
 
-    return user.id
+    return user_id
 
 
