@@ -30,7 +30,8 @@ def get_user(search=None):
 def get_all_users():
     mydb = db_connection()
     cursor = mydb.cursor()
-    stmt = "SELECT user_name from user order by influenze_project desc"
+    stmt = "SELECT user_name from user where processed = 0 AND influenze_project = 1 " \
+           "AND user_id is not null AND id > 5500 AND id < 6000 order by id desc"
     cursor.execute(stmt)
     result = cursor.fetchall()
 
