@@ -27,14 +27,12 @@ def get_user(search=None):
         return 1
 
 
-def get_all_users():
+def get_all_users(lower_bound=0, upper_bound=1):
     mydb = db_connection()
     cursor = mydb.cursor()
-    stmt = "SELECT user_name from user where processed = 0 AND influenze_project = 1 " \
-           "AND user_id is not null AND id > 5500 AND id < 6000 order by id desc"
+    stmt = "SELECT user_name from user where processed = 0 AND influenze_project = 1 AND user_id is not null AND id > " + str(lower_bound) + " AND id < " + str(upper_bound) + " order by id desc"
     cursor.execute(stmt)
     result = cursor.fetchall()
-
     return result
 
 
